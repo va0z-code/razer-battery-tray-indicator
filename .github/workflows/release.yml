@@ -1,0 +1,79 @@
+name: Build and Publish Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+
+  changelog:
+    name: Generate changelog
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      release_body: ${{ steps.git-cliff.outputs.content }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Generate changelog
+        uses: orhun/git-cliff-action@v4
+        id: git-cliff
+        with:
+          config: cliff.toml
+          args: --latest --no-exec --github-repo ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish:
+    name: Publish Release
+    needs: [build, changelog]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: snake-charger
+
+      - name: Generate checksums
+        run: sha256sum SnakeCharger-Setup.exe SnakeCharger-portable.exe > checksums.txt
+
+      - name: Write release notes
+        env:
+          CHANGELOG: ${{ needs.changelog.outputs.release_body }}
+        run: |
+          {
+            echo "## Download"
+            echo ""
+            echo "- **[SnakeCharger-Setup.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/SnakeCharger-Setup.exe)**: installer with Start menu shortcut and autostart (recommended)"
+            echo "- [SnakeCharger-portable.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/SnakeCharger-portable.exe): single file, no installation"
+            echo ""
+            echo "Windows may show a SmartScreen warning because the app is not code-signed. Click **More info → Run anyway**."
+            echo ""
+            echo "$CHANGELOG"
+          } > notes.md
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Snake Charger ${{ github.ref_name }}
+          files: |
+            SnakeCharger-Setup.exe
+            SnakeCharger-portable.exe
+            checksums.txt
+          body_path: notes.md
+          make_latest: true
+          fail_on_unmatched_files: true

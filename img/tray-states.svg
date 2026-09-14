@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="150" viewBox="0 0 760 150" role="img" aria-label="Tray icon states: normal, low battery, critical, charging, asleep">
+  <defs>
+    <g id="body">
+      <rect x="0" y="0" width="84" height="46" rx="9" fill="none" stroke-width="7"/>
+      <rect x="88" y="14" width="10" height="18" rx="3" stroke="none"/>
+    </g>
+    <path id="bolt" d="M34.7 -4 L4.5 28.5 L24.6 28.5 L20.2 52 L51.5 18.4 L31.4 18.4 Z"/>
+  </defs>
+  <rect width="760" height="150" rx="14" fill="#1C1F22"/>
+  <g font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="15" fill="#C9D1D9" text-anchor="middle">
+    <g transform="translate(46 34)">
+      <use href="#body" stroke="#FFFFFF" fill="#FFFFFF"/>
+      <rect x="10" y="10" width="46" height="26" fill="#FFFFFF"/>
+      <text x="49" y="90">75% · normal</text>
+    </g>
+    <g transform="translate(196 34)">
+      <use href="#body" stroke="#FFFFFF" fill="#FFFFFF"/>
+      <rect x="10" y="10" width="19" height="26" fill="#F5A524"/>
+      <text x="49" y="90">≤ 30% · low</text>
+    </g>
+    <g transform="translate(346 34)">
+      <use href="#body" stroke="#FFFFFF" fill="#FFFFFF"/>
+      <rect x="10" y="10" width="9" height="26" fill="#E5484D"/>
+      <text x="49" y="90">≤ 20% · critical</text>
+    </g>
+    <g transform="translate(496 34)">
+      <use href="#body" stroke="#FFFFFF" fill="#FFFFFF"/>
+      <rect x="10" y="10" width="37" height="26" fill="#44D62C"/>
+      <use href="#bolt" fill="#FFFFFF" stroke="#1C1F22" stroke-width="4" stroke-linejoin="round" transform="translate(14 0)"/>
+      <text x="49" y="90">charging</text>
+    </g>
+    <g transform="translate(646 34)">
+      <use href="#body" stroke="#8A8A8A" fill="#8A8A8A"/>
+      <text x="49" y="90">asleep</text>
+    </g>
+  </g>
+</svg>
