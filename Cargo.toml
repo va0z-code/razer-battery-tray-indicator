@@ -1,6 +1,6 @@
 [package]
 name = "snake-charger"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["va0z-code", "xzeldon <contact@zeldon.ru>"]
 edition = "2021"
 description = "Razer mouse battery level in the Windows tray with low battery notifications. No Synapse required."
