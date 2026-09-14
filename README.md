@@ -44,7 +44,7 @@ So I asked Razer for two simple things:
 
 They didn't reply. Not a "no", not a "we'll consider it". Nothing.
 
-**"For Gamers. By Gamers."**, apparently.
+So much for **"For Gamers. By Gamers."**
 
 So I built it myself. Snake Charger does exactly those two things, stays out of your way, and doesn't need Synapse at all.
 
