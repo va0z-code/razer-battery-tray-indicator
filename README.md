@@ -56,7 +56,7 @@ So I built it myself. Snake Charger does exactly those two things, stays out of 
 - **Quiet.** Switching between wired and wireless doesn't spam Connected/Disconnected toasts.
 - **No Synapse, no account, no telemetry.** One small native executable written in Rust.
 - **Starts with Windows.** The installer sets up autostart and a Start menu shortcut.
-- Tray menu: **Refresh now**, **Test notifications**, **Show Log Window**, **Exit**.
+- Tray menu: **Refresh now** and **Exit**. That's it.
 
 ## Install
 
@@ -124,7 +124,7 @@ The executable is at `target/release/snake-charger.exe`. To build the installer,
 
 ### Testing notifications
 
-Use **Test notifications** in the tray menu to see every toast type, or run with flags:
+Run the app with these flags to try the notifications without draining your mouse:
 
 | Flag                     | Effect                                                              |
 | ------------------------ | ------------------------------------------------------------------- |

@@ -11,7 +11,6 @@ use std::{
 
 use crate::{
     battery_icon,
-    console::DebugConsole,
     debounce::{Debouncer, Kind},
     manager::DeviceManager,
     notify::Notify,
@@ -76,21 +75,17 @@ enum WorkerCommand {
 
 pub struct TrayInner {
     tray_icon: Rc<Mutex<Option<TrayIcon>>>,
-    debug_console: Rc<DebugConsole>,
 }
 
 struct MenuItems {
     refresh: MenuItem,
-    test_notifications: MenuItem,
-    console: MenuItem,
     quit: MenuItem,
 }
 
 impl TrayInner {
-    fn new(debug_console: Rc<DebugConsole>) -> Self {
+    fn new() -> Self {
         Self {
             tray_icon: Rc::new(Mutex::new(None)),
-            debug_console,
         }
     }
 
@@ -98,16 +93,12 @@ impl TrayInner {
         let tray_menu = Menu::new();
         let items = MenuItems {
             refresh: MenuItem::new("Refresh now", true, None),
-            test_notifications: MenuItem::new("Test notifications", true, None),
-            console: MenuItem::new("Show Log Window", true, None),
             quit: MenuItem::new("Exit", true, None),
         };
 
         if let Err(e) = tray_menu.append_items(&[
             &items.refresh,
-            &items.test_notifications,
             &PredefinedMenuItem::separator(),
-            &items.console,
             &items.quit,
         ]) {
             warn!("Failed to append menu items: {}", e);
@@ -147,10 +138,10 @@ enum TrayEvent {
 }
 
 impl TrayApp {
-    pub fn new(debug_console: DebugConsole, options: Options) -> Self {
+    pub fn new(options: Options) -> Self {
         Self {
             devices: Arc::new(Mutex::new(HashMap::new())),
-            tray_inner: TrayInner::new(Rc::new(debug_console)),
+            tray_inner: TrayInner::new(),
             notify: Arc::new(Notify::new()),
             options,
         }
@@ -349,8 +340,6 @@ impl TrayApp {
     ) {
         let devices = Arc::clone(&self.devices);
         let tray_icon = Rc::clone(&self.tray_inner.tray_icon);
-        let debug_console = Rc::clone(&self.tray_inner.debug_console);
-        let notify = Arc::clone(&self.notify);
 
         let menu_channel = MenuEvent::receiver();
 
@@ -367,22 +356,6 @@ impl TrayApp {
                 tao::event::Event::UserEvent(TrayEvent::MenuEvent(event)) => {
                     if event.id == menu_items.refresh.id() {
                         let _ = cmd_tx.send(WorkerCommand::Refresh);
-                    }
-
-                    if event.id == menu_items.test_notifications.id() {
-                        let notify = Arc::clone(&notify);
-                        thread::spawn(move || notify.test_all());
-                    }
-
-                    if event.id == menu_items.console.id() {
-                        debug_console.toggle_visibility();
-                        let visible = debug_console.is_visible();
-                        menu_items.console.set_text(if visible {
-                            "Hide Log Window"
-                        } else {
-                            "Show Log Window"
-                        });
-                        trace!("{} log window", if visible { "showing" } else { "hiding" });
                     }
 
                     if event.id == menu_items.quit.id() {

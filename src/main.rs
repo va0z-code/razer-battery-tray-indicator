@@ -1,7 +1,6 @@
 #![windows_subsystem = "windows"]
 
 mod battery_icon;
-mod console;
 mod controller;
 mod debounce;
 mod devices;
@@ -13,13 +12,10 @@ mod system;
 mod tray;
 mod wake;
 
-use console::DebugConsole;
 use options::Options;
 use tray::TrayApp;
 
 fn main() {
-    let console = DebugConsole::new("Snake Charger Debug Console");
-
     std::env::set_var("RUST_LOG", "trace");
     pretty_env_logger::init();
 
@@ -34,5 +30,5 @@ fn main() {
         log::info!("Options: {options:?}");
     }
 
-    TrayApp::new(console, options).run();
+    TrayApp::new(options).run();
 }

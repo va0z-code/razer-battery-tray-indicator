@@ -37,7 +37,7 @@ tray-icon = "0.24.1"
 image = "0.25.9"
 
 # Windows API
-winapi = { version = "0.3.9", features = ["winuser", "wincon", "consoleapi", "shellapi", "winreg", "winerror", "minwindef", "sysinfoapi"] }
+winapi = { version = "0.3.9", features = ["winuser", "shellapi", "winreg", "winerror", "minwindef", "sysinfoapi"] }
 
 # Efficient synchronization primitives (e.g. Mutex, RwLock and etc.)
 parking_lot = "0.12"
