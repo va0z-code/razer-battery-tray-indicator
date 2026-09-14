@@ -4,7 +4,7 @@ version = "1.0.0"
 authors = ["va0z-code", "xzeldon <contact@zeldon.ru>"]
 edition = "2021"
 description = "Razer mouse battery level in the Windows tray with low battery notifications. No Synapse required."
-repository = "https://github.com/va0z-code/razer-battery-tray"
+repository = "https://github.com/va0z-code/razer-battery-tray-indicator"
 license = "MIT"
 keywords = ["razer", "battery", "tray", "windows", "synapse"]
 

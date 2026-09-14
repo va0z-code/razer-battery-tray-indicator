@@ -1,6 +1,6 @@
 [remote.github]
 owner = "va0z-code"
-repo = "razer-battery-tray"
+repo = "razer-battery-tray-indicator"
 
 [changelog]
 header = "## Changelog\n"
@@ -34,7 +34,7 @@ body = """
 """
 trim = true
 postprocessors = [
-  { pattern = '<REPO>', replace = "https://github.com/va0z-code/razer-battery-tray" },
+  { pattern = '<REPO>', replace = "https://github.com/va0z-code/razer-battery-tray-indicator" },
 ]
 
 [git]

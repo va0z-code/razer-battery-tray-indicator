@@ -9,20 +9,20 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/va0z-code/razer-battery-tray/releases/latest/download/SnakeCharger-Setup.exe">
+  <a href="https://github.com/va0z-code/razer-battery-tray-indicator/releases/latest/download/SnakeCharger-Setup.exe">
     <img src="img/download-button.svg" width="420" alt="Download Snake Charger for Windows">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/va0z-code/razer-battery-tray/releases/latest"><img src="https://img.shields.io/github/v/release/va0z-code/razer-battery-tray?label=version&color=44D62C" alt="Latest version"></a>
-  <a href="https://github.com/va0z-code/razer-battery-tray/releases"><img src="https://img.shields.io/github/downloads/va0z-code/razer-battery-tray/total?color=44D62C" alt="Downloads"></a>
+  <a href="https://github.com/va0z-code/razer-battery-tray-indicator/releases/latest"><img src="https://img.shields.io/github/v/release/va0z-code/razer-battery-tray-indicator?label=version&color=44D62C" alt="Latest version"></a>
+  <a href="https://github.com/va0z-code/razer-battery-tray-indicator/releases"><img src="https://img.shields.io/github/downloads/va0z-code/razer-battery-tray-indicator/total?color=44D62C" alt="Downloads"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D4" alt="Windows 10 and 11">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/va0z-code/razer-battery-tray" alt="MIT license"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/va0z-code/razer-battery-tray-indicator" alt="MIT license"></a>
 </p>
 
 <p align="center">
-  <sub>Prefer no installer? Get the <a href="https://github.com/va0z-code/razer-battery-tray/releases/latest/download/SnakeCharger-portable.exe">portable .exe</a>.</sub>
+  <sub>Prefer no installer? Get the <a href="https://github.com/va0z-code/razer-battery-tray-indicator/releases/latest/download/SnakeCharger-portable.exe">portable .exe</a>.</sub>
 </p>
 
 ---
@@ -60,11 +60,11 @@ So I built it myself. Snake Charger does exactly those two things, stays out of 
 
 ## Install
 
-1. **[Download SnakeCharger-Setup.exe](https://github.com/va0z-code/razer-battery-tray/releases/latest/download/SnakeCharger-Setup.exe)**
+1. **[Download SnakeCharger-Setup.exe](https://github.com/va0z-code/razer-battery-tray-indicator/releases/latest/download/SnakeCharger-Setup.exe)**
 2. Run it. No admin rights are needed.
 3. The battery icon appears in the tray. If you don't see it, click the **^** arrow next to the clock and drag the icon onto the taskbar.
 
-> **"Windows protected your PC"?** Snake Charger is not code-signed yet, so SmartScreen may warn about an unknown publisher. Click **More info → Run anyway**. The source code is right here, and every release is built by [GitHub Actions](https://github.com/va0z-code/razer-battery-tray/actions) with SHA-256 checksums attached.
+> **"Windows protected your PC"?** Snake Charger is not code-signed yet, so SmartScreen may warn about an unknown publisher. Click **More info → Run anyway**. The source code is right here, and every release is built by [GitHub Actions](https://github.com/va0z-code/razer-battery-tray-indicator/actions) with SHA-256 checksums attached.
 
 **Uninstall:** Settings → Apps → Installed apps → Snake Charger → Uninstall.
 
@@ -91,7 +91,7 @@ So I built it myself. Snake Charger does exactly those two things, stays out of 
 | Razer Orochi V2 (Receiver)                                 | 1532:0094   |
 | Razer Orochi V2 (Bluetooth)                                | 1532:0095   |
 
-Your mouse isn't listed? [Open an issue](https://github.com/va0z-code/razer-battery-tray/issues/new) with the model name, or add it yourself (see [Adding a device](#adding-a-device)). Pull requests are welcome.
+Your mouse isn't listed? [Open an issue](https://github.com/va0z-code/razer-battery-tray-indicator/issues/new) with the model name, or add it yourself (see [Adding a device](#adding-a-device)). Pull requests are welcome.
 
 ## FAQ
 
@@ -115,8 +115,8 @@ There aren't any yet. The defaults are the thresholds described in [Features](#f
 You need [Rust](https://www.rust-lang.org/) and [Git](https://git-scm.com/).
 
 ```bash
-git clone https://github.com/va0z-code/razer-battery-tray.git
-cd razer-battery-tray
+git clone https://github.com/va0z-code/razer-battery-tray-indicator.git
+cd razer-battery-tray-indicator
 cargo build --release
 ```
 
